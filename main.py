@@ -1,3 +1,4 @@
+import sys
 # NAO PRECISA DE '=': LOAD_MQ, LSH, RSH
 
 OP_CODE_TEXT = [
@@ -31,6 +32,7 @@ def create_variable(var_name):
     if var_name in VARIABLES_NAME:
         if VARIABLES_MEMORY[VARIABLES_NAME.index(var_name)] != -1:
             print("Error: Duplicate variable statement")
+            sys.exit()
         else:
             VARIABLES_MEMORY[VARIABLES_NAME.index(var_name)] = LINE_CURRENT
     else:
@@ -44,6 +46,7 @@ def create_tempory_variable(var_name):
 
     if var_name in VARIABLES_NAME:
         print("Error: Duplicate variable statement")
+        sys.exit()
     VARIABLES_NAME.append(var_name)
     VARIABLES_MEMORY.append(-1)
 
@@ -54,7 +57,7 @@ def get_variable_memory(var_name):
 
     if var_name not in VARIABLES_NAME:
         print("Error: Address to memory is invalid")
-        return -1
+        sys.exit()
     position = VARIABLES_MEMORY[VARIABLES_NAME.index(var_name)]
     return position
 
@@ -71,6 +74,7 @@ def create_label(label_name):
         else:
             print("Error: The label name already exists! Name:{}".format(
                 label_name))
+            sys.exit()
     else:
         LABELS_NAME.append(label_name)
         LABELS_MEMORY.append(LINE_CURRENT)
@@ -81,7 +85,8 @@ def create_tempory_label(label_name):
     global LABELS_MEMORY
 
     if label_name in LABELS_NAME:
-        print("Error: Duplicate label name 1")
+        print(f"Error: Duplicate label name {label_name}")
+        sys.exit()
     LABELS_NAME.append(label_name)
     LABELS_MEMORY.append(-1)
 
@@ -92,6 +97,7 @@ def get_label_memory(label_name):
 
     if label_name not in LABELS_NAME:
         print("Error: Label name not exists")
+        sys.exit()
     return LABELS_MEMORY[LABELS_NAME.index(label_name)]
 
 
@@ -135,6 +141,7 @@ def decode_instruction(inst):
                     ret += ' ' + inst[1]
         else:
             print("Error: Wrong Syntex Detected")
+            sys.exit()
 
         return ret
 
@@ -174,7 +181,7 @@ def decode(line):
     OUTPUT.append(output)
 
 
-file = open('code.txt', 'r')
+file = open(sys.argv[1], 'r')
 
 for x in file:
     decode(x)
