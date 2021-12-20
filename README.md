@@ -14,7 +14,7 @@ Para que você consiga executar esse script, é necessário `python` na versão 
 ---
 ## Como usar
 
-Você deve criar um arquivo onde você escreverá seu código e abrir o terminal de comandos (cmd ou bash) na pasta onde você baixou esse script e usar o python3 para executá-lo:
+Você deve criar um arquivo onde você escreverá seu código e abrir o terminal de comandos (cmd ou bash) na pasta onde você baixou esse script e usar o python3 para executá-lo (geralmente, no cmd omitimos o '3' do comando python):
 
 Exemplo com arquivo `codigo.txt` na mesma pasta:
 
@@ -33,7 +33,7 @@ Por padrão, o projeto já vem com um arquivo `code.txt` na mesma pasta que cont
 python3 main.py code.txt
 ```
 
-Os códigos gerados podem ser simulador usando o ___simulador de IAS da Unicamp___ nesse [link](https://www.ic.unicamp.br/~edson/disciplinas/mc404/2017-2s/abef/IAS-sim/).
+Os códigos gerados podem ser simulados usando o ___Simulador de IAS da Unicamp___ nesse [link](https://www.ic.unicamp.br/~edson/disciplinas/mc404/2017-2s/abef/IAS-sim/).
 
 
 ---
@@ -67,11 +67,11 @@ Os códigos gerados podem ser simulador usando o ___simulador de IAS da Unicamp_
 
   Exemplo de instruções que carregam valores da memória.
   ```
-  load=var0,                  sub=var_varivel
+  load=var0,                  sub=var_variavel
   add=varnomedaminhavariavel, stor=var_com_nome_legal
   ```
 
-- Algumas instruções não precisam que seja passados os endereços para eles, que é o caso do `LSH` (*Left shift*), `RSH` (*Right shift*), `LOAD MQ` (*load AC to MQ*) e `ABORT` (*Faz o programa parar colocando a instrução 00 000*), então nesses casos você não precisa usar a igualdade (`=`) na instrução.
+- Algumas instruções não precisam que seja passados os endereços para eles, que é o caso do `LSH` (*Left shift*), `RSH` (*Right shift*), `LOAD MQ` (*load MQ to AC*) e `ABORT` (*Faz o programa parar colocando a instrução 00 000*), então nesses casos você não precisa usar a igualdade (`=`) na instrução.
 
   Exemplos:
   ```
@@ -81,7 +81,7 @@ Os códigos gerados podem ser simulador usando o ___simulador de IAS da Unicamp_
 
 - Caso você queira indicar o final da execução do programa use o comando `ABORT` que ele irá fazer que o IAS-Tool preencha no espaço uma instrução *00 000*.
 
-- Os endereços atribuídos para o script são dinâmicos, então caso você queira fazer um `JUMP` para uma parte do código, deve-se criar uma linha antes da linha alvo e  criar uma *LABEL* que identificará a linha que voê deseja pular. Para criar essa label, você deve usar o prefixo `LAB` e o nome da label, sem espaços do prefixo com o nome.
+- Os endereços atribuídos para o script são dinâmicos, então caso você queira fazer um `JUMP` para uma parte do código, deve-se criar uma linha antes da linha alvo e  criar uma *LABEL* que identificará a linha que você deseja pular. Para criar essa label, você deve usar o prefixo `LAB` e o nome da label, sem espaços do prefixo com o nome.
   
   Exemplo onde meu fluxo deve pular para a instrução `LOAD=VAR_A1`:
   ```
@@ -136,7 +136,7 @@ Os códigos gerados podem ser simulador usando o ___simulador de IAS da Unicamp_
 
   Subtrai o valor do `AC` com o valor na memória declarada. Guarda o resultado em `AC`.
 
-+ ***SUB_MOD*** - `SUB |M(x)|`
++ ***SUBABS*** - `SUB |M(x)|`
 
   Subtrai o valor do `AC` com o valor absoluto na memória declarada. Guarda o resultado em `AC`.
 
