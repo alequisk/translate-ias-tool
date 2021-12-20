@@ -1,16 +1,16 @@
-LAB_MAIN
-LOAD=VAR_FATORIAL SUB=VAR_INCREMENTO
-STOR=VAR_FATORIAL JUMP_IF_LEFT=LAB_FOR_FATORIAL
-ABORT_PROGRAM ABORT_PROGRAM
+lab_main
+load=var_fatorial,     sub=var_incremento
+stor=var_fatorial,     jumpil=lab_for_fatorial
+abort,                 abort
 
-LAB_FOR_FATORIAL
-LOAD_MQ_M=VAR_RESULTADO MUL=VAR_ITERATOR
-LOAD_MQ STOR=VAR_RESULTADO
-LOAD=VAR_ITERATOR ADD=VAR_INCREMENTO
-STOR=VAR_ITERATOR JUMP_NOIF_LEFT=LAB_MAIN
-ABORT_PROGRAM ABORT_PROGRAM
+lab_for_fatorial
+loadmmq=var_resultado, mul=var_iterator
+loadmq,                stor=var_resultado
+load=var_iterator,     add=var_incremento
+stor=var_iterator,     jumpl=lab_main
+abort,                 abort
 
-VAR_FATORIAL 3
-VAR_ITERATOR 1
-VAR_INCREMENTO 1
-VAR_RESULTADO 1
+var_fatorial=3
+var_iterator=1
+var_incremento=1
+var_resultado=1
